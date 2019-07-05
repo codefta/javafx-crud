@@ -17,13 +17,13 @@
    <children>
       <BorderPane prefHeight="540.0" prefWidth="720.0">
          <left>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green; -fx-border-color: green;" BorderPane.alignment="CENTER">
                <children>
                   <Pane layoutY="11.0" prefHeight="71.0" prefWidth="200.0" />
                   <Text fill="WHITE" layoutX="63.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Data" />
                   <Text fill="WHITE" layoutX="26.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" text="Mahasiswa" />
-                  <Button layoutX="41.0" layoutY="132.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="117.0" style="-fx-background-color: white; -fx-font-size: 20;" text="Data" textFill="#509a5c" />
-                  <Button layoutX="39.0" layoutY="206.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: white; -fx-font-size: 20;" text="Statistik" textFill="#23835b" />
+                  <Button layoutX="41.0" layoutY="132.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="117.0" style="-fx-background-color: #bdc3c7; -fx-font-size: 20;" text="Data" textFill="#509a5c" />
+                  <Button layoutX="39.0" layoutY="206.0" onAction="#changeToStatistik" mnemonicParsing="false" prefHeight="41.0" prefWidth="120.0" style="-fx-background-color: white; -fx-font-size: 20;" text="Statistik" textFill="#23835b" />
                </children>
             </Pane>
          </left>

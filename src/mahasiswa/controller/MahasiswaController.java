@@ -1,5 +1,10 @@
 package mahasiswa.controller;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.util.converter.FloatStringConverter;
 import mahasiswa.Main;
 import mahasiswa.model.Mahasiswa;
@@ -11,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,7 +68,6 @@ public class MahasiswaController implements Initializable {
         namaMahasiswa.setCellValueFactory(cellData -> cellData.getValue().namaMahasiswaProperty());
         genderMahasiswa.setCellValueFactory(cellData -> cellData.getValue().genderMahasiswaProperty());
         ipkMahasiswa.setCellValueFactory(cellData -> cellData.getValue().ipkMahasiswaProperty().asObject());
-
 
         // Edit Section
         mahasiswaTable.setEditable(true);
@@ -130,5 +135,16 @@ public class MahasiswaController implements Initializable {
         Mahasiswa mhs = mahasiswaTable.getSelectionModel().getSelectedItem();
         mhs.setIpkMahasiswa(mhsEditEvent.getNewValue());
         mahasiswaList.saveXMLFile();
+    }
+
+    //switch Scene
+    @FXML
+    public void changeToStatistik(ActionEvent event) throws IOException {
+        Parent statistikParent = FXMLLoader.load(getClass().getResource("../view/statistik.fxml"));
+        Scene statistikScene = new Scene(statistikParent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(statistikScene);
+        window.show();
     }
 }
