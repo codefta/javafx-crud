@@ -29,7 +29,9 @@ public class StatistikController implements Initializable {
     @FXML
     private Pane paneViews;
     @FXML
-    private Label jumlah;
+    private Label modus;
+    @FXML
+    private Label mean;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -44,17 +46,23 @@ public class StatistikController implements Initializable {
         int rangeTwo = 0;
         int rangeThree = 0;
         int rangeFour = 0;
+        int rangeFive = 0;
+        int rangeSix = 0;
         for(Mahasiswa mhs : mahasiswa.get()) {
             String nama = mhs.getNamaMahasiswa();
             Float ipk = mhs.getIpkMahasiswa();
-            if( ipk >= 2.0 && ipk <= 2.5 ) {
+            if( ipk >= 1.0 && ipk <= 1.5 ) {
                 rangeOne++;
-            } else if( ipk >= 2.6 && ipk <= 3.0) {
+            } else if(ipk >= 1.6 && ipk <= 2.0) {
                 rangeTwo++;
-            } else if( ipk >= 3.1 && ipk <= 3.5) {
+            } else if( ipk >= 2.1 && ipk <= 2.5 ) {
                 rangeThree++;
-            } else if(ipk >= 3.6 && ipk <= 4.0) {
+            } else if( ipk >= 2.6 && ipk <= 3.0) {
                 rangeFour++;
+            } else if( ipk >= 3.1 && ipk <= 3.5) {
+                rangeFive++;
+            } else if(ipk >= 3.6 && ipk <= 4.0) {
+                rangeSix++;
             }
         }
 
@@ -63,14 +71,26 @@ public class StatistikController implements Initializable {
         XYChart.Series<String, Integer> series = new XYChart.Series<>();
         series.setName("IPK");
 
-        series.getData().add(new XYChart.Data("2.0 - 2.5", rangeOne));
-        series.getData().add(new XYChart.Data("2.6 - 3.0", rangeTwo));
-        series.getData().add(new XYChart.Data("3.1 - 3.5", rangeThree));
-        series.getData().add(new XYChart.Data("3.6 - 4.0", rangeFour));
+        series.getData().add(new XYChart.Data("1.0 - 1.5", rangeOne));
+        series.getData().add(new XYChart.Data("1.6 - 2.0", rangeTwo));
+        series.getData().add(new XYChart.Data("2.1 - 2.5", rangeThree));
+        series.getData().add(new XYChart.Data("2.6 - 3.0", rangeFour));
+        series.getData().add(new XYChart.Data("3.1 - 3.5", rangeFive));
+        series.getData().add(new XYChart.Data("3.6 - 4.0", rangeSix));
 
         barChart.getData().add(series);
-    }
 
+        float nilaiTengah1 = (1.0f + 1.5f) / 2;
+        float nilaiTengah2 = (1.6f + 2.0f) / 2;
+        float nilaiTengah3 = (2.1f + 2.5f) / 2;
+        float nilaiTengah4 = (2.6f + 3.0f) / 2;
+        float nilaiTengah5 = (3.1f + 3.5f) / 2;
+        float nilaiTengah6 = (3.6f + 4.0f) / 2;
+
+        float meanTot = ((rangeOne * nilaiTengah1) + (rangeTwo * nilaiTengah2) + (rangeThree * nilaiTengah3) + (rangeFour * nilaiTengah4) + (rangeFive *nilaiTengah5) + (rangeSix * nilaiTengah6)) / (rangeOne + rangeTwo + rangeThree + rangeFour + rangeFive + rangeSix);
+
+        mean.setText(Float.toString(meanTot));
+    }
     //switch Scene
 
     @FXML
