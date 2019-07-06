@@ -19,6 +19,7 @@ import mahasiswa.model.MahasiswaList;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class StatistikController implements Initializable {
@@ -88,8 +89,48 @@ public class StatistikController implements Initializable {
         float nilaiTengah6 = (3.6f + 4.0f) / 2;
 
         float meanTot = ((rangeOne * nilaiTengah1) + (rangeTwo * nilaiTengah2) + (rangeThree * nilaiTengah3) + (rangeFour * nilaiTengah4) + (rangeFive *nilaiTengah5) + (rangeSix * nilaiTengah6)) / (rangeOne + rangeTwo + rangeThree + rangeFour + rangeFive + rangeSix);
-
         mean.setText(Float.toString(meanTot));
+
+        int[] range = {rangeOne, rangeTwo, rangeThree, rangeFour, rangeFive, rangeSix};
+
+        Arrays.sort(range);
+        int max = range[range.length - 1];
+        int highFrekuensi = 0;
+        float selisihFreAtas = 0;
+        float selisihFreBawah = 0;
+        if (max == rangeOne) {
+            highFrekuensi = rangeOne;
+            selisihFreAtas = rangeOne - 0;
+            selisihFreBawah = rangeOne - rangeTwo;
+        } else if (max == rangeTwo) {
+            highFrekuensi = rangeTwo;
+            selisihFreBawah = rangeTwo - rangeThree;
+            selisihFreAtas = rangeTwo - rangeOne;
+        } else if (max == rangeThree) {
+            highFrekuensi = rangeThree;
+            selisihFreBawah = rangeThree - rangeFour;
+            selisihFreAtas = rangeThree - rangeTwo;
+        } else if (max == rangeFour) {
+            highFrekuensi = rangeFour;
+            selisihFreBawah = rangeFour - rangeFive;
+            selisihFreAtas = rangeFour - rangeThree;
+        } else if (max == rangeFive) {
+            highFrekuensi = rangeFive;
+            selisihFreBawah = rangeFive - rangeSix;
+            selisihFreAtas = rangeFive - rangeFour;
+        } else if (max == rangeSix) {
+            highFrekuensi = rangeSix;
+            selisihFreBawah = rangeSix - 0;
+            selisihFreAtas = rangeSix - rangeFive;
+        }
+
+        float batasBawah = (float) highFrekuensi - 0.5f;
+        int interval = 5;
+
+        float modusTot = batasBawah + (selisihFreAtas / (selisihFreAtas + selisihFreBawah)) * interval;
+
+        modus.setText(Float.toString(modusTot));
+
     }
     //switch Scene
 
