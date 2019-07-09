@@ -62,8 +62,10 @@ public class MahasiswaList {
 
     public void saveXMLFile() {
         SimpleMahasiswa[] array = this.getArray();
+        System.out.println(array.toString());
         XStream xs = new XStream(new StaxDriver());
         String xml = xs.toXML(array);
+        System.out.println(xml);
 
         try{
             FileOutputStream output = new FileOutputStream(extFile);
