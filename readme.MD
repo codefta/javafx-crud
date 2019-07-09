@@ -16,3 +16,10 @@
 |           |--Main.java
 ```
 
+#### Membuat Model CRUD
+*Model ini adalah tempat untuk lebih dekat kepada masalah pertukaran data antara database dan aplikasi.
+1. Buatlah file SimpleMahasiswa.java di package **model**
+2. Isikan **property**, **method**, dan **contructor** pada kelas tersebut. Sesuaikan dengan kebutuhan!
+3. Buatlah file Mahasiswa.java dan tambahkan atribut property yang nanti bisa digunakan pada javafxnya.
+4. Buatlah MahasiswaList.java sebagai kelas untuk menyimpan dan membaca data dari xml.
+5. Seluruh contoh sourcecode bisa dilihat di atas.
